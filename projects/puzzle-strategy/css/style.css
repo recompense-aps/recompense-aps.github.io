@@ -1,0 +1,68 @@
+body{
+    background-color: crimson;
+}
+.container{
+    background-color: white;
+}
+.hide{
+    display: none;
+}
+.word{
+    user-select: none;
+    cursor: pointer;
+    margin: 2px;
+    font-size: x-large;
+}
+
+.card{
+    user-select: none;
+    cursor: pointer;
+}
+.card-translation{
+    display: block;
+}
+
+.card[data-flip = "esp"] .content-eng{
+    display: none;
+}
+
+.card[data-flip = "eng"] .content-esp{
+    display: none;
+}
+[data-edit = "hide"]{
+    display: none;
+}
+
+h1,h2{
+    text-align: center;
+}
+h1, #info{
+    background-color: #5F8F00;
+    padding-bottom: 1%;
+    color: white;
+}
+a{
+    color: #002C2C;
+}
+#main-container{
+    width: 70%;
+    margin: 0px auto;
+    margin-top: -1%;
+    padding-top: 1%;
+    min-height: 800px;
+    max-height: 805px;
+    overflow-y: scroll;
+}
+
+#info{
+    margin-top: -1%;
+    padding-top: 1%;;
+    min-height: 300px;
+    max-width: initial;
+}
+
+#input{
+    width: 90%;
+    margin: 5%;
+    height: 100px;
+}

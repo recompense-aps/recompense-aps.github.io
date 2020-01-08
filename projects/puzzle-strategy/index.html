@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src = "vue.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href = "css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>The Puzzle Strategy</h1>
+        <div id = "main-container" class="container">
+            <div id = "output">
+                <div class = "word badge" 
+                    v-for = "word in words" 
+                    v-bind:class = "{ 'badge-danger':isWordUnKnown(word), 'badge-success':isWordKnown(word) }"
+                    v-on:click = "swapWord(word)"
+                    v-on:dblclick = "lookUpWord(word, $event)"
+                    >
+                    {{word}}
+            </div>
+            </div>
+            <textarea id = "input" v-on:input = "inputChanged" placeholder="Type or paste your Spanish text here"></textarea>
+            <h2>Flash Cards</h2>
+            <div id = "cards" class = "row">
+                <div class = "col-lg-3 card" data-flip = "esp"
+                    v-for = "word in words"
+                    v-if = "isWordUnKnown(word)"
+                    v-on:click = "flipCard"                   
+                >
+                    <div class="card-body">
+                        <div class="content-esp">
+                            {{word}}
+                            <input class = "card-translation" data-edit="edit"
+                                placeholder="In English..."
+                                v-on:input = "setTranslation(word, $event)"
+                                v-on:contextmenu = "toggleEdit"
+                            />
+                        </div>
+                        <div class="content-eng">
+                            {{getTranslation(word)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id = "info" class="container">
+            <h2>How it works</h2>
+            <p> Adapted from the puzzle strategy of <a href = "https://spanishdude.com/">The Spanish Dude</a>, this little web app helps with Spanish comprehension.</p>
+            <p>
+                Simply <strong>paste</strong> a block of spanish text. It will be broken down word by word. 
+                <strong>Click</strong> a word to mark it as a word you know.
+                <strong>Double click</strong> to go to Spanish Dictionary to learn the translation.
+            </p>
+            <p>
+                Some nifty flash cards will be generated for you. Type in the english translation and 
+                <strong>right click</strong> it to hide it. 
+                <strong>Click</strong> the top left of the card to flip it.
+            </p>
+        </div>
+        <script src = "js/app.js">
+        </script>
+    </body>
+</html>
